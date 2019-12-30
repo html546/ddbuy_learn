@@ -1,6 +1,6 @@
 <template>
-  <div class="cart">
-    <h1>这是购物车</h1>
+  <div class="order">
+    <h1>订单</h1>
   </div>
 </template>
 
@@ -14,9 +14,9 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.cart {
+.order {
   width: 100%;
   height: 100%;
-  background: red;
+  background-color: black;
 }
 </style>
