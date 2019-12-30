@@ -1,27 +1,61 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+import Dashboard from "../views/dashboard/Dashboard";
+
+const Home = () => import("../views/home/Home");
+const Category = () => import("../views/category/Category");
+const Eat = () => import("../views/eat/Eat");
+const Cart = () => import("../views/cart/Cart");
+const Mine = () => import("../views/mine/Mine");
+
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: Home
+    path: "/",
+    redirect: "/dashboard"
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: "/dashboard",
+    name: "dashboard",
+    component: Dashboard,
+    children: [
+      {
+        path: "/dashboard",
+        redirect: "/dashboard/home"
+      },
+      {
+        path: "home",
+        name: "home",
+        component: Home
+      },
+      {
+        path: "category",
+        name: "category",
+        component: Category
+      },
+      {
+        path: "eat",
+        name: "eat",
+        component: Eat
+      },
+      {
+        path: "cart",
+        name: "cart",
+        component: Cart
+      },
+      {
+        path: "mine",
+        name: "mine",
+        component: Mine
+      }
+    ]
   }
-]
+];
 
 const router = new VueRouter({
   routes
-})
+});
 
-export default router
+export default router;

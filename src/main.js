@@ -12,6 +12,8 @@ if ("addEventListener" in document) {
 
 Vue.config.productionTip = false;
 
+import "./plugin/vant";
+
 new Vue({
   router,
   store,
